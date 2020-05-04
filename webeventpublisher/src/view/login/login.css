@@ -1,0 +1,37 @@
+.login-content{
+    width: 100%;
+    height: 100vh;
+    padding: 15%;
+    margin: auto;
+    background-color: #614ea6;
+
+}
+
+.btn-login{
+    background-color: #533175;
+    color: white;
+}
+.btn-login:hover{
+    background-color: white;
+    color: #533175;
+    transition: .3s ease-in-out;
+}
+
+.btn-signup{
+    background-color: rgb(238, 151, 22);
+    color: #533175;
+}
+.btn-signup:hover{
+    background-color: #ffffff;
+    color: #533175;
+    transition: .3s ease-in-out;
+}
+
+.login-options a{
+    text-decoration: none;
+    color: #ffffff;
+    transition: .3s ease-in-out;
+}
+.login-options a:hover{
+    color: #533175;
+}
