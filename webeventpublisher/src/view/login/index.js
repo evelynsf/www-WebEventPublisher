@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './login.css';
 
+import firebase from '../../config/firebase';
+import 'firebase/auth';
+
 function Login(){
+
+    var [email, setEmail] = useState();
+    var [password, setPassword] = useState();
+
+    function signin(){
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function(e){
+            alert("yeah");
+        })
+        .catch(function(error){
+            alert(error.code + " - " + error.message);
+        });
+    }
+
     return(
 
         <div className="login-content d-flex align-itens-center">
@@ -9,15 +26,15 @@ function Login(){
 
             <form className="form-signin mx-auto">
                 <div className="text-center mb-4">
-                    <h1 className="h3 mb-3 text-white font-weight-normal">Login</h1>
+                    <h1 className="h3 mb-3 text-white font-weight-normal"> Log in</h1>
                 </div>
 
                 <div className="form-label-group">
-                    <input type="email" id="inputEmail" class="form-control my-2" placeholder="Email address" />
+                    <input onChange={(e)=> setEmail(e.target.value)} type="email" id="inputEmail" class="form-control my-2" placeholder="Email address" />
                 </div>
 
                 <div className="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control my-2" placeholder="Password" />
+                    <input onChange={(e) => setPassword(e.target.value)} type="password" id="inputPassword" class="form-control my-2" placeholder="Password" />
                 </div>
 
                 {/*
@@ -27,9 +44,10 @@ function Login(){
                 </div>
                 */} 
                 
-                <button className="btn btn-lg btn-login btn-block my-2" type="submit">Sign in</button>
+                <button onClick={signin} className="btn btn-lg btn-login btn-block my-2" type="submit">Sign in</button>
                 <div className="signin-message text-white text-center my-4">
                     <span><strong>Whoah!</strong> You are signed in! &#128526;</span>
+                    <br></br>
                     <span><strong>Oops, sorry!</strong> E-mail or password incorrect! &#128546;</span>
                 </div>
 
